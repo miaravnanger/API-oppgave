@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat API</title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Cat gallery</h1>
+      <form id="cat-form">
+        <br />
+        <label for="breed">Choose breed:</label>
+        <select id="breed"></select>
+        <br />
+        <br />
+        <label for="amount">Amount of images:</label>
+        <input type="number" id="amount" value="3" min="1" max="10" />
+        <br />
+        <br />
+        <button id="loadCats">Load cats</button>
+      </form>
+      <div class="gallery"></div>
+    </main>
+  </body>
+</html>
