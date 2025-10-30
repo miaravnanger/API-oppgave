@@ -3,26 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cat API</title>
+    <title>Dog API</title>
     <script src="app.js" defer></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
-      <h1>Cat gallery</h1>
-      <form id="cat-form">
+        <section id="form-section">
+      <h1>Dog gallery</h1>
+      <br>
+      <p>Choose breed from the list or choose random breed to get a completely random dog for your gallery</p>
+        <br />
         <br />
         <label for="breed">Choose breed:</label>
-        <select id="breed"></select>
+        <select id="breed">
+          <option value="">Random breed</option>
+        </select>
         <br />
         <br />
-        <label for="amount">Amount of images:</label>
-        <input type="number" id="amount" value="3" min="1" max="10" />
-        <br />
-        <br />
-        <button id="loadCats">Load cats</button>
-      </form>
-      <div class="gallery"></div>
+        <button id="loadDog">Load dog</button>
+        </section>
+      <br>
+      <br>
+      <section id="gallery-section"
+      <h2>Gallery</h2>
+      <div class="images">
+      </div>
+    </section>
     </main>
   </body>
 </html>
