@@ -1,9 +1,9 @@
-// Call the function when the website opnes
+// Call the load breeds function when the website opens
 document.addEventListener("DOMContentLoaded", () => {
   loadBreeds();
 });
 // To do:
-// function to make the first letter capitalized
+// Make the first letter in the breeds capitalized
 const capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
@@ -14,22 +14,22 @@ const loadBreeds = async () => {
     const data = await response.json();
     const breeds = data.message;
 
-    const select = document.getElementById("selectBreed");
+    const breedSelect = document.getElementById("selectBreed");
 
     for (const breed in breeds) {
       const subBreeds = breeds[breed];
 
       if (subBreeds.length === 0) {
         const option = document.createElement("option");
-        option.value = "breed";
+        option.value = breed;
         option.textContent = capitalize(breed);
-        select.appendChild(option);
+        breedSelect.appendChild(option);
       } else {
         for (const sub of subBreeds) {
           const option = document.createElement("option");
           option.value = `${breed}/${sub}`;
           option.textContent = `${capitalize(sub)} ${capitalize(breed)}`;
-          select.appendChild(option);
+          breedSelect.appendChild(option);
           console.log();
         }
       }
@@ -40,40 +40,51 @@ const loadBreeds = async () => {
 };
 
 const getImages = async () => {
+  const breedSelect = document.getElementById("selectBreed");
+  const breedValue = breedSelect.value;
+  const numSelect = document.getElementById("amount");
+  const num = numSelect.value;
+
+  let url;
+
+  if (breedValue === "all") {
+    url = `https://dog.ceo/api/breeds/image/random/${num}`;
+  } else {
+    url = `https://dog.ceo/api/breed/${breedValue}/images/random/${num}`;
+  }
+
   try {
-    if (value === "all") {
-      const response = await fetch("https://dog.ceo/api/breeds/image/random");
-      const data = await response.json();
-    } else if (value === "`${breed}") {
-      const response = await fetch(
-        "https://dog.ceo/api/breed/{breed}/hound/images"
-      );
-      const data = await response.json();
-    } else if (value === "`${breed}/${sub}`") {
-      const response = await fetch(
-        "https://dog.ceo/api/breed/{breed}/{subbreed}/hound/images"
-      );
+    const response = await fetch(url);
+    const data = await response.json();
+  
+    // display images in gallery
+    const gallery = document.getElementById("images");
+    gallery.innerHTML = "";
+    data.message.forEach((imgUrl) => {
+      const img = document.createElement("img");
+      img.src = imgUrl;
+      img.alt = "Dog!";
+      img.width = 250;
+      gallery.appendChild(img);
+    });
+
+
+// Show h2 when loadDog is clicked 
+const galleryTitle = document.querySelector("#gallery-section h2");
+galleryTitle.style.display = "block";
+
+    const imageCount = data.message.length;
+    if (imageCount === 1) {
+      gallery.style.gridTemplateColumns = "1fr";
+    } else if (imageCount === 2 || imageCount === 4) {
+      gallery.style.gridTemplateColumns = "repeat(2, 1fr)";
+    } else {
+      gallery.style.gridTemplateColumns = "repeat(3, 1fr)";
     }
   } catch (error) {
     console.log("Something went wrong", error);
   }
 };
 
-//   Get the button and add eventlistener and the if statements with the correct API paths
-document.getElementById("loadDog").addEventListener("change", getImages);
-// fetch images
-// const randomImages = async () => {
-// try {
-//     const response = await fetch("https://dog.ceo/api/breeds/image/random");
-//     const data = await response.json()
-// } catch(error){
-//     console.log("Something went wrong", error)
-// }
-//   };
-// // event listener på knapp
-// const loadBtn = document
-//   .getElementById("loadDog")
-//   .addEventListener("click", (e) => {});
-
-// add to gallery
-// const gallery = document.getElementById("images");
+// Event listener for the button
+document.getElementById("loadDog").addEventListener("click", getImages);

@@ -12,22 +12,33 @@
         <section id="form-section">
       <h1>Dog gallery</h1>
       <br>
-      <p>Choose breed from the list or choose random breed to get a completely random dog for your gallery</p>
+      <p>Choose breed from the list or choose random breed to get a completely random dog</p>
         <br />
         <br />
         <label for="selectBreed">Choose breed:</label>
+				<br>
         <select id="selectBreed">
-          <option value="allBreeds">All breeds</option>
+          <option value="all">All breeds</option>
         </select>
         <br />
+				<label for="amount">How many images do you want?</label>
+				<br>
+				<select id="amount">
+					<Option value="1">1</Option>
+					<Option value="2">2</Option>
+					<Option value="3">3</Option>
+					<Option value="4">4</Option>
+					<Option value="5">5</Option>
+					<Option value="6">6</Option>
+				</select>
         <br />
-        <button id="loadDog">Load dog</button>
+        <button id="loadDog">Submit</button>
         </section>
       <br>
       <br>
-      <section id="gallery-section"
+      <section id="gallery-section">
       <h2>Gallery</h2>
-      <div class="images">
+      <div id="images">
       </div>
     </section>
     </main>

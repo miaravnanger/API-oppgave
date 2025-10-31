@@ -1,33 +1,65 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    background-color: grey;
-}
-#form-section{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+body {
+  background-color: grey;
+  font-size: 20px;
 }
 
-form{
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-
+#form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#gallery-section{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
 }
-.images {
-	display:grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 2rem;
+button{
+    font-size: 20px;
+}
+#amount {
+  width: 100px;
+}
+#selectBreed {
+  text-align: center;
+}
+select {
+  font-size: 20px;
+  height: 30px;
+}
+#gallery-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#gallery-section h2 {
+  display: none;
+}
+
+#images {
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+  display: grid;
+  gap: 2rem;
+  justify-items: center;
+}
+
+#images img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
