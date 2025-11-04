@@ -90,10 +90,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const breedSearch = document.getElementById("breedSearch");
   const loadButton = document.getElementById("loadDog");
 
+  // Targeting the default option change the textcontext to "Show breeds" when the user searches the list
+  const defaultOption = breedSelect.querySelector('option[value="all"]');
+
   // Listening for input value from user, show the options that includes what the user inputs, dont display the other options
   breedSearch.addEventListener("input", () => {
     const filter = breedSearch.value.toLowerCase();
+
+    if (filter.length > 0) {
+      defaultOption.textContent = "Show breeds";
+    } else {
+      defaultOption.textContent = "All breeds";
+    }
+
     for (let option of breedSelect.options) {
+      if (option.value === "all") continue;
+
       const text = option.textContent.toLowerCase();
       option.style.display = text.includes(filter) ? "" : "none";
     }
