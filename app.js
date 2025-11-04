@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Targeting the default option change the textcontext to "Show breeds" when the user searches the list
   const defaultOption = breedSelect.querySelector('option[value="all"]');
 
-  // Listening for input value from user, show the options that includes what the user inputs, dont display the other options
+  // Listening for input value from user,changing the default options text content, show the options that includes what the user inputs, dont display the other options
   breedSearch.addEventListener("input", () => {
     const filter = breedSearch.value.toLowerCase();
 
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       defaultOption.textContent = "All breeds";
     }
-
+// skipping the "all breeds" option 
     for (let option of breedSelect.options) {
       if (option.value === "all") continue;
 
