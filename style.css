@@ -4,8 +4,14 @@
   box-sizing: border-box;
 }
 body {
-  background-color: grey;
+  min-height: auto;
+  min-width: 100swv;
+  /*background gradient from uigradients*/ 
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-size: 20px;
+  color: rgb(222, 222, 222);
 }
 
 #form-section {
@@ -39,7 +45,7 @@ select {
   justify-content: center;
   align-items: center;
 }
-#gallery-section h2 {
+.gallery-title {
   display: none;
 }
 

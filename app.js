@@ -39,6 +39,7 @@ const loadBreeds = async () => {
   }
 };
 
+// fetching images from the dogAPI depending on what the user selects
 const getImages = async () => {
   const breedSelect = document.getElementById("selectBreed");
   const breedValue = breedSelect.value;
@@ -56,7 +57,7 @@ const getImages = async () => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-  
+
     // display images in gallery
     const gallery = document.getElementById("images");
     gallery.innerHTML = "";
@@ -68,10 +69,9 @@ const getImages = async () => {
       gallery.appendChild(img);
     });
 
-
-// Show h2 when loadDog is clicked 
-const galleryTitle = document.querySelector("#gallery-section h2");
-galleryTitle.style.display = "block";
+    // Show Gallery h2 only when loadDog has been clicked
+    const galleryTitle = document.querySelector(".gallery-title");
+    galleryTitle.style.display = "block";
 
     const imageCount = data.message.length;
     if (imageCount === 1) {
