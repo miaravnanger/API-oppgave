@@ -1,7 +1,3 @@
-// Call the load breeds function when the website opens
-document.addEventListener("DOMContentLoaded", () => {
-  loadBreeds();
-});
 // To do:
 // Make the first letter in the breeds capitalized
 const capitalize = (str) => {
@@ -85,6 +81,24 @@ const getImages = async () => {
     console.log("Something went wrong", error);
   }
 };
+// Event listener to load functions when the website is opened
+document.addEventListener("DOMContentLoaded", () => {
+  loadBreeds();
 
-// Event listener for the button
-document.getElementById("loadDog").addEventListener("click", getImages);
+  // Search input and get images
+  const breedSelect = document.getElementById("selectBreed");
+  const breedSearch = document.getElementById("breedSearch");
+  const loadButton = document.getElementById("loadDog");
+
+  // Listening for input value from user, show the options that includes what the user inputs, dont display the other options
+  breedSearch.addEventListener("input", () => {
+    const filter = breedSearch.value.toLowerCase();
+    for (let option of breedSelect.options) {
+      const text = option.textContent.toLowerCase();
+      option.style.display = text.includes(filter) ? "" : "none";
+    }
+  });
+
+  // Load images
+  loadButton.addEventListener("click", getImages);
+});

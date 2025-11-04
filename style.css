@@ -35,7 +35,11 @@ button{
 #selectBreed {
   text-align: center;
 }
-select {
+#breedSearch{
+  font-size: 19px;
+}
+
+.inputClass {
   font-size: 20px;
   height: 30px;
 }
