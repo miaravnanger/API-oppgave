@@ -77,6 +77,14 @@ const getImages = async () => {
     } else {
       gallery.style.gridTemplateColumns = "repeat(3, 1fr)";
     }
+    const breedSearch = document.getElementById("breedSearch");
+    breedSearch.value = "";
+
+    for (let option of breedSelect.options) {
+      option.style.display = "";
+    }
+    const defaultOption = breedSelect.querySelector('option[value="all"]');
+    defaultOption.textContent = "All breeds";
   } catch (error) {
     console.log("Something went wrong", error);
   }
@@ -102,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       defaultOption.textContent = "All breeds";
     }
-// skipping the "all breeds" option 
+    // skipping the "all breeds" option
     for (let option of breedSelect.options) {
       if (option.value === "all") continue;
 
